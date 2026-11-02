@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Placeholder dashboard: two track bands (survey quality / programme performance), each with
+/* Placeholder dashboard: two track bands (programme performance / survey quality), each with
    the planned panels drawn as empty frames. Same palette as the site; traffic-light hues are semantic only. */
 :root{
   --bg:#f5f7f6; --paper:#ffffff; --fg:#17201f; --muted:#5a6866; --faint:#8a9592; --line:#d5dddb;
@@ -97,23 +97,23 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
     <a class="back" href="../">← Papua MNCH evaluation site</a>
     <div class="eyebrow" style="margin-top:14px">성과관리 대시보드 · Real-time feedback system</div>
     <h1>Performance dashboard</h1>
-    <p class="lede">A two-track dashboard for the KOICA–UNICEF Papua MNCH programme. Track 1 tracks the quality of the evaluation survey as fieldwork happens. Track 2 shows programme progress against PDM targets by regency, for the Project Steering Committee and KOICA.</p>
+    <p class="lede">A two-track dashboard for the KOICA–UNICEF Papua MNCH programme. Track 1 shows programme progress against PDM targets by regency, for the Project Steering Committee and KOICA. Track 2 tracks the quality of the evaluation survey as fieldwork happens.</p>
   </header>
 
-  <div class="banner"><span class="dot" aria-hidden="true"></span><div><b>Placeholder.</b> No data is shown yet. The panels below show the planned layout and indicators. Track 1 goes live with the baseline survey (fieldwork May–July 2027). Track 2 depends on the review of UNICEF data-sharing arrangements described below.</div></div>
+  <div class="banner"><span class="dot" aria-hidden="true"></span><div><b>Placeholder.</b> No data is shown yet. The panels below show the planned layout and indicators. Track 1 depends on the review of UNICEF data-sharing arrangements described below. Track 2 goes live with the baseline survey (fieldwork May–July 2027).</div></div>
 
   <section aria-labelledby="h-cmp">
     <h3 id="h-cmp">The two tracks</h3>
     <div class="tbl">
       <table class="cmp">
-        <thead><tr><th></th><th>Track 1 · Survey quality <span class="pill conf">Confirmed</span></th><th>Track 2 · Programme performance <span class="pill cond">Conditional</span></th></tr></thead>
+        <thead><tr><th></th><th>Track 1 · Programme performance <span class="pill cond">Conditional</span></th><th>Track 2 · Survey quality <span class="pill conf">Confirmed</span></th></tr></thead>
         <tbody>
-          <tr><th>Data source</th><td>Evaluation survey data collected by the research team (CAPI)</td><td>HMIS and UNICEF programme data, under a data-sharing protocol</td></tr>
-          <tr><th>Contents</th><td>Fieldwork progress and completion rate, back-check agreement, GPS flags, attrition and other quality indicators</td><td>Achievement against target by regency and indicator (traffic-light), date of latest data, alerts for missing data and attrition</td></tr>
-          <tr><th>Update frequency</th><td>Daily during fieldwork, linked to next-day high-frequency checks</td><td>Monthly for HMIS-linked indicators; each survey round for field-check and survey indicators</td></tr>
-          <tr><th>Users</th><td>Research team, field team (OHCC) and KOICA, for survey quality control</td><td>Circulated before PSC meetings; open to KOICA headquarters and the Indonesia office for decision-making</td></tr>
-          <tr><th>Start</th><td>Runs from the baseline survey</td><td>Built within the agreed scope after a review of UNICEF data policy and system compatibility within three months of project start; if not agreed, replaced by a monthly performance brief and a semi-annual integrated scorecard</td></tr>
-          <tr><th>Privacy and security</th><td>No respondent identifiers; aggregate quality indicators only</td><td>Aggregate level only; access rights set by user group; hosting and data retention location agreed in advance</td></tr>
+          <tr><th>Data source</th><td>HMIS and UNICEF programme data, under a data-sharing protocol</td><td>Evaluation survey data collected by the research team (CAPI)</td></tr>
+          <tr><th>Contents</th><td>Achievement against target by regency and indicator (traffic-light), date of latest data, alerts for missing data and attrition</td><td>Fieldwork progress and completion rate, back-check agreement, GPS flags, attrition and other quality indicators</td></tr>
+          <tr><th>Update frequency</th><td>Monthly for HMIS-linked indicators; each survey round for field-check and survey indicators</td><td>Daily during fieldwork, linked to next-day high-frequency checks</td></tr>
+          <tr><th>Users</th><td>Circulated before PSC meetings; open to KOICA headquarters and the Indonesia office for decision-making</td><td>Research team, field team (OHCC) and KOICA, for survey quality control</td></tr>
+          <tr><th>Start</th><td>Built within the agreed scope after a review of UNICEF data policy and system compatibility within three months of project start; if not agreed, replaced by a monthly performance brief and a semi-annual integrated scorecard</td><td>Runs from the baseline survey</td></tr>
+          <tr><th>Privacy and security</th><td>Aggregate level only; access rights set by user group; hosting and data retention location agreed in advance</td><td>No respondent identifiers; aggregate quality indicators only</td></tr>
         </tbody>
       </table>
     </div>
@@ -122,7 +122,40 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
   <!-- TRACK 1 -->
   <section class="track" aria-labelledby="h-t1">
     <div class="track-head">
-      <h2 id="h-t1">Track 1 · Survey quality <span class="pill conf">Confirmed</span></h2>
+      <h2 id="h-t1">Track 1 · Programme performance <span class="pill cond">Conditional</span></h2>
+      <div class="meta"><span>Source: <b>HMIS and UNICEF programme data</b></span><span>Updates: <b>monthly (HMIS) · per survey round</b></span><span>Status: <b>pending UNICEF data-policy review</b></span></div>
+    </div>
+
+    <div class="panel">
+      <h3>Achievement against target · by regency</h3>
+      <div class="legend">
+        <span><i class="sw ok"></i>On track</span><span><i class="sw warn"></i>Behind target</span><span><i class="sw bad"></i>Off track</span><span><i class="sw"></i>No data yet</span>
+      </div>
+      <div class="tbl" style="border:none">
+        <table class="matrix">
+          <thead><tr><th>PDM indicator</th><th class="n">Mamberamo Raya</th><th class="n">Biak Numfor</th><th class="n">Fakfak</th><th class="n">Peg. Arfak</th><th class="n">Raja Ampat</th><th class="n">Mappi</th><th class="n">Asmat</th></tr></thead>
+          <tbody id="matrix"></tbody>
+        </table>
+      </div>
+      <p class="ph">Indicator list follows the programme PDM and will be confirmed with UNICEF. Each cell will also show the date of the latest data.</p>
+    </div>
+
+    <div class="two">
+      <div class="panel">
+        <h3>Data alerts</h3>
+        <p class="ph">Flags for missing HMIS months, late reporting and attrition, by regency.</p>
+      </div>
+      <div class="panel">
+        <h3>If Track 1 is not agreed</h3>
+        <p style="font-size:14px">The same feedback is delivered as a <b>monthly performance brief</b> and a <b>semi-annual integrated scorecard</b>, distributed to the PSC and KOICA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK 2 -->
+  <section class="track" aria-labelledby="h-t2">
+    <div class="track-head">
+      <h2 id="h-t2">Track 2 · Survey quality <span class="pill conf">Confirmed</span></h2>
       <div class="meta"><span>Source: <b>DiD household survey, CAPI</b></span><span>Updates: <b>daily during fieldwork</b></span><span>First data: <b>baseline, May 2027</b></span></div>
     </div>
 
@@ -171,39 +204,6 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
     </div>
   </section>
 
-  <!-- TRACK 2 -->
-  <section class="track" aria-labelledby="h-t2">
-    <div class="track-head">
-      <h2 id="h-t2">Track 2 · Programme performance <span class="pill cond">Conditional</span></h2>
-      <div class="meta"><span>Source: <b>HMIS and UNICEF programme data</b></span><span>Updates: <b>monthly (HMIS) · per survey round</b></span><span>Status: <b>pending UNICEF data-policy review</b></span></div>
-    </div>
-
-    <div class="panel">
-      <h3>Achievement against target · by regency</h3>
-      <div class="legend">
-        <span><i class="sw ok"></i>On track</span><span><i class="sw warn"></i>Behind target</span><span><i class="sw bad"></i>Off track</span><span><i class="sw"></i>No data yet</span>
-      </div>
-      <div class="tbl" style="border:none">
-        <table class="matrix">
-          <thead><tr><th>PDM indicator</th><th class="n">Mamberamo Raya</th><th class="n">Biak Numfor</th><th class="n">Fakfak</th><th class="n">Peg. Arfak</th><th class="n">Raja Ampat</th><th class="n">Mappi</th><th class="n">Asmat</th></tr></thead>
-          <tbody id="matrix"></tbody>
-        </table>
-      </div>
-      <p class="ph">Indicator list follows the programme PDM and will be confirmed with UNICEF. Each cell will also show the date of the latest data.</p>
-    </div>
-
-    <div class="two">
-      <div class="panel">
-        <h3>Data alerts</h3>
-        <p class="ph">Flags for missing HMIS months, late reporting and attrition, by regency.</p>
-      </div>
-      <div class="panel">
-        <h3>If Track 2 is not agreed</h3>
-        <p style="font-size:14px">The same feedback is delivered as a <b>monthly performance brief</b> and a <b>semi-annual integrated scorecard</b>, distributed to the PSC and KOICA.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="track" aria-labelledby="h-impl">
     <h2 id="h-impl">Implementation</h2>
     <ul class="plain">
@@ -220,7 +220,7 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
   </footer>
 </div>
 <script>
-// Track 2 matrix: planned indicators, no data yet
+// Track 1 matrix: planned indicators, no data yet
 const IND = [
   ["Facility-based deliveries", "PDM outcome 2"],
   ["ANC (6 contacts)", "PDM output 2.3"],

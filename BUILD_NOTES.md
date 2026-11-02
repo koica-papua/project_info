@@ -22,15 +22,16 @@ Placeholder page, added 2 Nov 2026. No data is shown; every value is "—".
 
 - 사업수행계획서 (기술협상 3차 수정본, 2026.09.03; file `1. 제안서I_기술협상_수정본_20260830_260903_KOICA 3차 검토_SNU_하이라이트제거.pdf`)
   - Section III, 실시간 환류체계: 성과관리 대시보드 (pp. 77–79): two-track design, comparison table, implementation, maintenance, handover and running-cost text
-  - Section 2-4, survey quality control: Track 1 quality indicators (completion rate, back-check agreement, GPS flags, attrition) and protocol compliance indicators (third-party presence, audio audit pass rate, back-check agreement)
-- 착수보고 slides (`파푸아_심층성과관리_착수보고_영향평가_v2.pptx`, slide 5): mapping of survey modules to PDM indicators used in the Track 2 grid
-- DiD sample allocation, OHCC budget draft of 30 Oct 2026 (`파푸아_착수출장_현장메모_박성호_20261101_v2.docx`): per-regency targets in the Track 1 progress table
+  - Section 2-4, survey quality control: Track 2 quality indicators (completion rate, back-check agreement, GPS flags, attrition) and protocol compliance indicators (third-party presence, audio audit pass rate, back-check agreement)
+- 착수보고 slides (`파푸아_심층성과관리_착수보고_영향평가_v2.pptx`, slide 5): mapping of survey modules to PDM indicators used in the Track 1 grid
+- DiD sample allocation, OHCC budget draft of 30 Oct 2026 (`파푸아_착수출장_현장메모_박성호_20261101_v2.docx`): per-regency targets in the Track 2 progress table
 
 ### Decisions
 
-- Track 1 start is given as the baseline survey, May 2027, following the inception-trip decision (survey rounds May–July 2027/2028/2029). The 사업수행계획서 originally placed the baseline in 2026.
-- "Three months of project start" is used for the Track 2 review deadline, as in the plan (착수 후 3개월 이내); no calendar date is given on the page.
-- Track 2 indicators (provisional, to be confirmed with UNICEF):
+- Track numbering is reversed from the 사업수행계획서 (2 Nov 2026): the plan's 트랙 1 (조사 품질 대시보드) is Track 2 on the page, and its 트랙 2 (사업 성과 대시보드) is Track 1. Programme performance is shown first.
+- Track 2 start is given as the baseline survey, May 2027, following the inception-trip decision (survey rounds May–July 2027/2028/2029). The 사업수행계획서 originally placed the baseline in 2026.
+- "Three months of project start" is used for the Track 1 review deadline, as in the plan (착수 후 3개월 이내); no calendar date is given on the page.
+- Track 1 indicators (provisional, to be confirmed with UNICEF):
 
   | Indicator on page | PDM reference |
   |---|---|
