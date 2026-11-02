@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Papua MNCH Study Sites" data-title-ko="파푸아 MNCH 조사 대상 지역">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -10,7 +10,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<script src="../assets/lang.js"></script>
+<link rel="stylesheet" href="../assets/lang.css">
 <style>
 /* Layout: one wide atlas plate (map + key) over a regency register and a facility list; sea-chart palette.
    Teal = project sub-district, crimson = BEmONC sub-district, ochre = comparison regency */
@@ -19,8 +21,8 @@
   --sea:#e4edf0; --land:#eef0ea; --landline:#c9cfc5; --prov:#8d978f;
   --treat:#2a8a80; --treat-soft:#d3e8e3; --kecline:#ffffff;
   --bem:#b23a48; --comp:#b5852b; --comp-soft:#f0dfb8; --hosp:#27324a;
-  --f-display:"Public Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-display:"Public Sans","Noto Sans KR","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Public Sans","Noto Sans KR","Helvetica Neue",Arial,sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -96,6 +98,9 @@ summary{padding:12px 14px;cursor:pointer;font-weight:600}
 details .tbl{border:none;border-top:1px solid var(--line)}
 footer{color:var(--muted);font-size:12.5px;max-width:900px;display:grid;gap:4px}
 :focus-visible{outline:2px solid var(--treat);outline-offset:2px}
+html.ko .eyebrow,html.ko aside h2,html.ko th,html.ko .pill{font-family:var(--f-body);letter-spacing:0;text-transform:none}
+html.ko aside h2,html.ko thead th{font-weight:600}
+html.ko .lbl .sub{font-family:var(--f-body)}
 /* zoom */
 #map{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 #map.dragging{cursor:grabbing}
@@ -119,20 +124,20 @@ tbody tr.sel td{background:var(--treat-soft)}
 <body>
 <div class="wrap">
   <header>
-    <a class="back" href="../">← Papua MNCH evaluation site</a>
-    <div class="eyebrow">KOICA–UNICEF Papua MNCH · 심층 성과관리 · Intervention and comparison sites</div>
-    <h1>Project Puskesmas and BEmONC sub-districts</h1>
-    <p class="lede">The 55 UNICEF-supported Puskesmas in the seven treatment regencies, with the 18 BEmONC facilities and their sub-districts marked, and the three terrain-matched comparison regencies. Hover a sub-district or marker for detail; click a regency row to highlight it on the map.</p>
+    <div class="topbar"><a class="back" href="../"><span class="l-en">← Papua MNCH evaluation site</span><span class="l-ko">← 파푸아 MNCH 평가 사이트</span></a><div class="lang-switch" role="group" aria-label="Language / 언어"><button type="button" data-set="en" aria-pressed="true">EN</button><button type="button" data-set="ko" aria-pressed="false">한국어</button></div></div>
+    <div class="eyebrow"><span class="l-en">KOICA–UNICEF Papua MNCH · Intervention and comparison sites</span><span class="l-ko">KOICA–UNICEF 파푸아 MNCH · 심층 성과관리 · 사업 대상지 및 비교군</span></div>
+    <h1><span class="l-en">Project Puskesmas and BEmONC sub-districts</span><span class="l-ko">사업 보건소와 BEmONC 소지역</span></h1>
+    <p class="lede"><span class="l-en">The 55 UNICEF-supported Puskesmas in the seven treatment regencies, with the 18 BEmONC facilities and their sub-districts marked, and the three terrain-matched comparison regencies. Hover a sub-district or marker for detail; click a regency row to highlight it on the map.</span><span class="l-ko">처치군 7개 군의 UNICEF 지원 보건소(Puskesmas) 55개와 그중 BEmONC 시설 18개 및 해당 소지역, 지형 기준으로 매칭한 비교군 3개 군을 표시함. 소지역이나 표시에 마우스를 올리면 세부 정보가 나타나고, 아래 표에서 군을 누르면 지도에서 해당 군으로 이동함.</span></p>
     <div class="figs">
-      <div><b>55</b>project Puskesmas</div>
-      <div><b>18</b>BEmONC Puskesmas</div>
-      <div><b>48</b>project sub-districts</div>
-      <div><b>18</b>BEmONC sub-districts</div>
-      <div><b>9</b>CEmONC hospitals</div>
+      <div><b>55</b><span class="l-en">project Puskesmas</span><span class="l-ko">사업 보건소</span></div>
+      <div><b>18</b><span class="l-en">BEmONC Puskesmas</span><span class="l-ko">BEmONC 보건소</span></div>
+      <div><b>48</b><span class="l-en">project sub-districts</span><span class="l-ko">사업 소지역</span></div>
+      <div><b>18</b><span class="l-en">BEmONC sub-districts</span><span class="l-ko">BEmONC 소지역</span></div>
+      <div><b>9</b><span class="l-en">CEmONC hospitals</span><span class="l-ko">CEmONC 병원</span></div>
     </div>
   </header>
 
-  <div class="flag"><b>55 Puskesmas, 48 sub-districts.</b> The site list does not have one Puskesmas per sub-district: Biak Numfor's 9 Puskesmas fall in 3 sub-districts, and Mamberamo Tengah holds 2. The DiD allocation of 30 Oct (36 treatment sub-districts, 6 in Biak Numfor) assumed 55 sub-districts, so the sampling unit may need to be the Puskesmas catchment rather than the sub-district.</div>
+  <div class="flag"><span class="l-en"><b>55 Puskesmas, 48 sub-districts.</b> The site list does not have one Puskesmas per sub-district: Biak Numfor's 9 Puskesmas fall in 3 sub-districts, and Mamberamo Tengah holds 2. The DiD allocation of 30 Oct (36 treatment sub-districts, 6 in Biak Numfor) assumed 55 sub-districts, so the sampling unit may need to be the Puskesmas catchment rather than the sub-district.</span><span class="l-ko"><b>보건소 55개, 소지역 48개.</b> 사업 대상지 목록상 소지역당 보건소가 1개씩이 아님. Biak Numfor의 보건소 9개는 3개 소지역에 속하고, Mamberamo Tengah에는 2개가 있음. 10월 30일 DiD 표본 배분안(처치 36개 소지역, Biak Numfor 6개)은 55개 소지역을 전제로 하였으므로, 표본 단위를 소지역 대신 보건소 관할구역으로 바꿀 필요가 있을 수 있음.</span></div>
 
   <div class="plate">
     <div class="mapbox" id="mapbox">
@@ -143,58 +148,58 @@ tbody tr.sel td{background:var(--treat-soft)}
         <button type="button" id="zreset" aria-label="Reset view" title="Reset view"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" style="background:none"><path d="M2 6V2h4M14 10v4h-4M2 2l4.5 4.5M14 14l-4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
         <span id="zlvl" aria-live="polite">1×</span>
       </div>
-      <div class="zhint">Scroll or pinch to zoom · drag to pan · double-click to zoom in</div>
+      <div class="zhint"><span class="l-en">Scroll or pinch to zoom · drag to pan · double-click to zoom in</span><span class="l-ko">스크롤·핀치로 확대 · 드래그로 이동 · 더블클릭으로 확대</span></div>
       <div class="tip" id="tip" hidden></div>
     </div>
     <aside>
       <div>
-        <h2>Sub-districts</h2>
+        <h2><span class="l-en">Sub-districts</span><span class="l-ko">소지역</span></h2>
         <div class="key">
-          <div><span class="sw" style="background:var(--bem)"></span>BEmONC sub-district</div>
-          <div><span class="sw" style="background:var(--treat)"></span>Project sub-district, PHC only</div>
-          <div><span class="sw" style="background:var(--treat-soft);border-color:var(--treat)"></span>Treatment regency, not a project site</div>
-          <div><span class="sw" style="background:var(--comp-soft);border-color:var(--comp)"></span>Comparison regency</div>
+          <div><span class="sw" style="background:var(--bem)"></span><span class="l-en">BEmONC sub-district</span><span class="l-ko">BEmONC 소지역</span></div>
+          <div><span class="sw" style="background:var(--treat)"></span><span class="l-en">Project sub-district, PHC only</span><span class="l-ko">사업 소지역(일반 보건소만)</span></div>
+          <div><span class="sw" style="background:var(--treat-soft);border-color:var(--treat)"></span><span class="l-en">Treatment regency, not a project site</span><span class="l-ko">처치군 내 사업 대상 외 소지역</span></div>
+          <div><span class="sw" style="background:var(--comp-soft);border-color:var(--comp)"></span><span class="l-en">Comparison regency</span><span class="l-ko">비교군</span></div>
         </div>
       </div>
       <div>
-        <h2>Facilities</h2>
+        <h2><span class="l-en">Facilities</span><span class="l-ko">시설</span></h2>
         <div class="key">
-          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><circle cx="11" cy="8" r="4.5" class="pk b"/></svg>BEmONC Puskesmas</div>
-          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><circle cx="11" cy="8" r="3.5" class="pk p"/></svg>PHC Puskesmas</div>
-          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><rect x="6" y="3" width="10" height="10" class="hs"/></svg>CEmONC referral hospital</div>
-          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><line x1="1" y1="8" x2="21" y2="8" stroke="var(--prov)" stroke-width="1.5" stroke-dasharray="5 3"/></svg>Province boundary (2022)</div>
+          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><circle cx="11" cy="8" r="4.5" class="pk b"/></svg><span class="l-en">BEmONC Puskesmas</span><span class="l-ko">BEmONC 보건소</span></div>
+          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><circle cx="11" cy="8" r="3.5" class="pk p"/></svg><span class="l-en">PHC Puskesmas</span><span class="l-ko">일반 보건소(PHC)</span></div>
+          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><rect x="6" y="3" width="10" height="10" class="hs"/></svg><span class="l-en">CEmONC referral hospital</span><span class="l-ko">CEmONC 전원 병원</span></div>
+          <div><svg width="22" height="16" viewBox="0 0 22 16" style="background:none"><line x1="1" y1="8" x2="21" y2="8" stroke="var(--prov)" stroke-width="1.5" stroke-dasharray="5 3"/></svg><span class="l-en">Province boundary (2022)</span><span class="l-ko">주 경계(2022)</span></div>
         </div>
       </div>
       <div class="toggles">
-        <label class="toggle" for="tKec"><input type="checkbox" id="tKec" checked> Sub-district boundaries</label>
-        <label class="toggle" for="tPk"><input type="checkbox" id="tPk" checked> Puskesmas markers</label>
-        <label class="toggle" for="tHs"><input type="checkbox" id="tHs" checked> Hospitals</label>
+        <label class="toggle" for="tKec"><input type="checkbox" id="tKec" checked> <span class="l-en">Sub-district boundaries</span><span class="l-ko">소지역 경계</span></label>
+        <label class="toggle" for="tPk"><input type="checkbox" id="tPk" checked> <span class="l-en">Puskesmas markers</span><span class="l-ko">보건소 표시</span></label>
+        <label class="toggle" for="tHs"><input type="checkbox" id="tHs" checked> <span class="l-en">Hospitals</span><span class="l-ko">병원</span></label>
       </div>
-      <p class="note">Markers sit inside the listed sub-district and do not show exact facility positions; where a sub-district has several Puskesmas they are fanned around one point. Hospitals are placed at their town.</p>
-      <p class="note">Boundaries: Kemendagri 2018 kecamatan layer. "Kepulauan Numfor" is drawn as the five Numfor island distrik combined.</p>
+      <p class="note"><span class="l-en">Markers sit inside the listed sub-district and do not show exact facility positions; where a sub-district has several Puskesmas they are fanned around one point. Hospitals are placed at their town.</span><span class="l-ko">보건소 표시는 해당 소지역 안에 놓았으며 정확한 시설 위치는 아님. 한 소지역에 보건소가 여러 개면 한 지점 주위에 나누어 표시함. 병원은 소재 도시에 표시함.</span></p>
+      <p class="note"><span class="l-en">Boundaries: Kemendagri 2018 kecamatan layer. "Kepulauan Numfor" is drawn as the five Numfor island distrik combined.</span><span class="l-ko">경계: 내무부(Kemendagri) 2018년 kecamatan 자료. "Kepulauan Numfor"는 Numfor섬의 5개 distrik을 합쳐 표시함.</span></p>
     </aside>
   </div>
 
-  <h2 class="sec">Regencies</h2>
+  <h2 class="sec"><span class="l-en">Regencies</span><span class="l-ko">군별 현황</span></h2>
   <div class="tbl">
     <table id="tbl">
-      <thead><tr><th>Regency</th><th>Province</th><th>Terrain</th><th class="n">Puskesmas</th><th class="n">BEmONC</th><th class="n">Project sub-districts</th><th class="n">Distrik (2018)</th><th class="n">DiD survey (B+N)</th></tr></thead>
+      <thead><tr><th><span class="l-en">Regency</span><span class="l-ko">군</span></th><th><span class="l-en">Province</span><span class="l-ko">주</span></th><th><span class="l-en">Terrain</span><span class="l-ko">지형</span></th><th class="n"><span class="l-en">Puskesmas</span><span class="l-ko">보건소</span></th><th class="n">BEmONC</th><th class="n"><span class="l-en">Project sub-districts</span><span class="l-ko">사업 소지역</span></th><th class="n"><span class="l-en">Distrik (2018)</span><span class="l-ko">Distrik 수(2018)</span></th><th class="n"><span class="l-en">DiD survey (B+N)</span><span class="l-ko">DiD 조사(B+N)</span></th></tr></thead>
       <tbody></tbody>
     </table>
   </div>
 
   <details>
-    <summary>All 55 project Puskesmas</summary>
+    <summary><span class="l-en">All 55 project Puskesmas</span><span class="l-ko">사업 보건소 55개 전체 목록</span></summary>
     <div class="tbl">
       <table id="ptbl">
-        <thead><tr><th>Province</th><th>Regency</th><th>Sub-district</th><th>Puskesmas</th><th>Function</th></tr></thead>
+        <thead><tr><th><span class="l-en">Province</span><span class="l-ko">주</span></th><th><span class="l-en">Regency</span><span class="l-ko">군</span></th><th><span class="l-en">Sub-district</span><span class="l-ko">소지역</span></th><th><span class="l-en">Puskesmas</span><span class="l-ko">보건소</span></th><th><span class="l-en">Function</span><span class="l-ko">기능</span></th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
   </details>
 
   <footer>
-    <div>Jayapura Provincial Hospital is under reconsideration and may be replaced by Sorong Hospital.</div>
+    <div><span class="l-en">Jayapura Provincial Hospital is under reconsideration and may be replaced by Sorong Hospital.</span><span class="l-ko">Jayapura 주립병원은 재검토 중이며 Sorong 병원으로 대체될 수 있음.</span></div>
   </footer>
 </div>
 
@@ -272,7 +277,10 @@ for (const [name,[ax,ay]] of Object.entries(DATA.anch)) {
   el("path",{d:`M${ax},${ay}L${lx},${ly+4}`,class:"lead"},gl);
   const t = el("text",{x:lx,y:ly,class:"lbl","text-anchor":"middle"},gl);
   el("tspan",{x:lx},t).textContent = title(name);
-  el("tspan",{x:lx,dy:14,class:"sub"},t).textContent = R.r==="t" ? `${pk.length} Puskesmas · ${nb} BEmONC` : "comparison";
+  const st = el("tspan",{x:lx,dy:14,class:"sub"},t);
+  st.dataset.en = R.r==="t" ? `${pk.length} Puskesmas · ${nb} BEmONC` : "comparison";
+  st.dataset.ko = R.r==="t" ? `보건소 ${pk.length}개 · BEmONC ${nb}개` : "비교군";
+  st.textContent = L(st.dataset.en, st.dataset.ko);
 }
 
 // ---- zoom and pan (transform on #vp; markers and text keep a near-constant screen size)
@@ -373,18 +381,20 @@ function show(e, html){
   if (x > r.width - 270) x -= 290; if (y > r.height - 120) y -= 130;
   tip.style.left = x+"px"; tip.style.top = y+"px"; tip.hidden = false;
 }
-const fn = s => s.bem ? "BEmONC" : "PHC";
+const fn = s => s.bem ? "BEmONC" : L("PHC","일반(PHC)");
+const B = (en, ko) => `<span class="l-en">${en}</span><span class="l-ko">${ko}</span>`;
+const HST = {"CEmONC intensive · tertiary regional referral":"CEmONC 집중치료 · 3차 권역 전원기관","CEmONC intensive":"CEmONC 집중치료","CEmONC":"CEmONC","Being reconsidered; may be replaced by Sorong Hospital":"재검토 중, Sorong 병원으로 대체 가능"};
 svg.addEventListener("mousemove", e => {
   if (svg.classList.contains("dragging") || ptrs.size > 1) { tip.hidden = true; return; }
   const t = e.target;
   if (t.dataset.s !== undefined) { const s = DATA.sites[t.dataset.s];
-    return show(e, `<div class="k">${title(s.kab)} · ${esc(s.sub)}</div><b>Puskesmas ${esc(s.pk)}</b><br>${fn(s)}`); }
+    return show(e, `<div class="k">${title(s.kab)} · ${esc(s.sub)}</div><b>${L("Puskesmas ","보건소 ")}${esc(s.pk)}</b><br>${fn(s)}`); }
   if (t.dataset.h !== undefined) { const h = DATA.hosp[t.dataset.h];
-    return show(e, `<div class="k">${esc(h.loc)}</div><b>${esc(h.n)}</b><br>${esc(h.st)}${h.note?`<br><span class="k">${esc(h.note)}</span>`:""}`); }
+    return show(e, `<div class="k">${esc(h.loc)}</div><b>${esc(h.n)}</b><br>${esc(L(h.st, HST[h.st]||h.st))}${h.note?`<br><span class="k">${esc(L(h.note, HST[h.note]||h.note))}</span>`:""}`); }
   const p = t.closest && t.closest(".kec");
   if (p) { const k=p.dataset.k, n=p.dataset.n, R=REG[k], l=bySub[k+"|"+n];
-    let body = R.r==="c" ? "Comparison regency" : (l ? `<ul>${l.map(s=>`<li>${esc(s.pk)} (${fn(s)})</li>`).join("")}</ul>` : "Not a project sub-district");
-    return show(e, `<div class="k">${title(k)} · ${R.r==="t"?"treatment":"comparison"}</div><b>${l?esc(l[0].sub):"Distrik "+title(n)}</b>${l?"":"<br>"}${body}`); }
+    let body = R.r==="c" ? L("Comparison regency","비교군") : (l ? `<ul>${l.map(s=>`<li>${esc(s.pk)} (${fn(s)})</li>`).join("")}</ul>` : L("Not a project sub-district","사업 대상 소지역 아님"));
+    return show(e, `<div class="k">${title(k)} · ${R.r==="t"?L("treatment","처치군"):L("comparison","비교군")}</div><b>${l?esc(l[0].sub):"Distrik "+title(n)}</b>${l?"":"<br>"}${body}`); }
   tip.hidden = true;
 });
 svg.addEventListener("mouseleave", () => tip.hidden = true);
@@ -395,6 +405,8 @@ document.getElementById("tHs").addEventListener("change", e => svg.classList.tog
 
 // regency table
 const PROVN = {"Papua":"Papua","Papua Selatan":"South Papua","Papua Tengah":"Central Papua","Papua Pegunungan":"Highland Papua","Papua Barat":"West Papua","Papua Barat Daya":"Southwest Papua"};
+const PROVK = {"Papua":"파푸아주","South Papua":"남파푸아주","Central Papua":"중앙파푸아주","Highland Papua":"파푸아고원주","West Papua":"서파푸아주","Southwest Papua":"서남파푸아주"};
+const TERK = {"Lowland":"저지대","Island":"섬","Highland":"고산"};
 const PROV = {}; DATA.kab.forEach(k => PROV[k.n] = PROVN[k.p]||k.p);
 const nk = DATA.nk;
 const tb = document.querySelector("#tbl tbody");
@@ -405,12 +417,12 @@ function rows(role, label){
     const l = DATA.sites.filter(s=>s.kab===k), b = l.filter(s=>s.bem).length, sd = new Set(l.map(s=>s.kec)).size;
     T.pk+=l.length; T.b+=b; T.sd+=sd; T.d+=nk[k]; T.sb+=R.b; T.sn+=R.nb;
     const dash = v => role==="t" ? v : "–";
-    tb.insertAdjacentHTML("beforeend", `<tr data-k="${k}" tabindex="0"><td>${title(k)} <span class="pill ${role}">${role==="t"?"treatment":"comparison"}</span></td><td>${PROV[k]}</td><td>${R.terr}</td><td class="n">${dash(l.length)}</td><td class="n">${dash(b)}</td><td class="n">${dash(sd)}</td><td class="n">${nk[k]}</td><td class="n">${R.b}+${R.nb}</td></tr>`);
+    tb.insertAdjacentHTML("beforeend", `<tr data-k="${k}" tabindex="0"><td>${title(k)} <span class="pill ${role}">${role==="t"?B("treatment","처치군"):B("comparison","비교군")}</span></td><td>${B(PROV[k],PROVK[PROV[k]])}</td><td>${B(R.terr,TERK[R.terr])}</td><td class="n">${dash(l.length)}</td><td class="n">${dash(b)}</td><td class="n">${dash(sd)}</td><td class="n">${nk[k]}</td><td class="n">${R.b}+${R.nb}</td></tr>`);
   });
   const dash = v => role==="t" ? v : "–";
-  tb.insertAdjacentHTML("beforeend", `<tr class="tot"><td>Subtotal</td><td></td><td></td><td class="n">${dash(T.pk)}</td><td class="n">${dash(T.b)}</td><td class="n">${dash(T.sd)}</td><td class="n">${T.d}</td><td class="n">${T.sb}+${T.sn}</td></tr>`);
+  tb.insertAdjacentHTML("beforeend", `<tr class="tot"><td>${B("Subtotal","소계")}</td><td></td><td></td><td class="n">${dash(T.pk)}</td><td class="n">${dash(T.b)}</td><td class="n">${dash(T.sd)}</td><td class="n">${T.d}</td><td class="n">${T.sb}+${T.sn}</td></tr>`);
 }
-rows("t","Treatment (7 regencies)"); rows("c","Comparison (3 regencies, terrain-matched)");
+rows("t",B("Treatment (7 regencies)","처치군(7개 군)")); rows("c",B("Comparison (3 regencies, terrain-matched)","비교군(지형 매칭 3개 군)"));
 let cur=null;
 function hl(name){
   (kecEls[cur]||[]).forEach(p=>p.classList.remove("hl"));
@@ -429,7 +441,8 @@ tb.querySelectorAll("tr[data-k]").forEach(tr=>{
 // facility list
 const pt = document.querySelector("#ptbl tbody");
 DATA.sites.forEach(s => pt.insertAdjacentHTML("beforeend",
-  `<tr><td>${esc(s.prov)}</td><td>${title(s.kab)}</td><td>${esc(s.sub)}</td><td>${esc(s.pk)}</td><td><span class="pill ${s.bem?"b":"p"}">${fn(s)}</span></td></tr>`));
+  `<tr><td>${B(esc(s.prov),PROVK[s.prov]||esc(s.prov))}</td><td>${title(s.kab)}</td><td>${esc(s.sub)}</td><td>${esc(s.pk)}</td><td><span class="pill ${s.bem?"b":"p"}">${s.bem?"BEmONC":B("PHC","일반(PHC)")}</span></td></tr>`));
+document.addEventListener("langchange", () => { document.querySelectorAll("tspan.sub").forEach(s => s.textContent = L(s.dataset.en, s.dataset.ko)); });
 </script>
 
 </body>

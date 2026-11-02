@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Papua MNCH Evaluation" data-title-ko="파푸아 MNCH 평가">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,14 +7,16 @@
 <title>Papua MNCH Evaluation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<script src="assets/lang.js"></script>
+<link rel="stylesheet" href="assets/lang.css">
 <style>
 /* Project hub: a plain register of shared resources, same palette as the study-site map */
 :root{
   --bg:#f5f7f6; --paper:#ffffff; --fg:#17201f; --muted:#5a6866; --line:#d5dddb;
   --treat:#2a8a80; --treat-soft:#d3e8e3; --bem:#b23a48;
-  --f-body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f-body:"Public Sans","Noto Sans KR","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root{
@@ -26,6 +28,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);fon
 .eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 h1{font-size:clamp(28px,4vw,40px);line-height:1.12;margin:6px 0 12px;text-wrap:balance}
 h2{font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+html.ko h2{font-family:var(--f-body);font-weight:600;letter-spacing:0}
 p{margin:0;max-width:68ch}
 .lede{color:var(--muted)}
 dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 20px;margin:0;font-size:14.5px}
@@ -37,6 +40,7 @@ dt{color:var(--muted)} dd{margin:0}
 .item .t{font-weight:600;font-size:17px}
 .item .d{grid-column:1;color:var(--muted);font-size:14.5px}
 .item .m{grid-row:1 / span 2;grid-column:2;align-self:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+html.ko .item .m{font-family:var(--f-body)}
 footer{color:var(--muted);font-size:13px;display:grid;gap:4px}
 :focus-visible{outline:2px solid var(--treat);outline-offset:2px}
 @media (max-width:520px){.item{grid-template-columns:1fr}.item .m{grid-row:auto;grid-column:1}dl{grid-template-columns:1fr}dt{margin-top:6px}}
@@ -45,45 +49,63 @@ footer{color:var(--muted);font-size:13px;display:grid;gap:4px}
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">KOICA · UNICEF · 심층 성과관리</div>
-    <h1>Papua MNCH Evaluation</h1>
-    <p class="lede">Shared materials for the impact evaluation of the KOICA–UNICEF programme to improve maternal and newborn health in Papua, Indonesia (2025–2029). Maps, survey documents and progress material for the partner teams are posted here.</p>
+    <div class="topbar">
+      <div class="eyebrow">KOICA · UNICEF · 심층 성과관리</div>
+      <div class="lang-switch" role="group" aria-label="Language / 언어"><button type="button" data-set="en" aria-pressed="true">EN</button><button type="button" data-set="ko" aria-pressed="false">한국어</button></div>
+    </div>
+    <h1><span class="l-en">Papua MNCH Evaluation</span><span class="l-ko">파푸아 모자보건(MNCH) 사업 평가</span></h1>
+    <p class="lede"><span class="l-en">Shared materials for the impact evaluation of the KOICA–UNICEF programme to improve maternal and newborn health in Papua, Indonesia (2025–2029). Maps, survey documents and progress material for the partner teams are posted here.</span><span class="l-ko">KOICA–UNICEF 인도네시아 파푸아 모성 및 신생아 건강 개선사업(2025–2029) 영향평가 공유 자료. 협력기관이 함께 보는 지도, 조사 문서, 진행 자료를 게시함.</span></p>
   </header>
 
   <section>
-    <h2>Programme</h2>
+    <h2><span class="l-en">Programme</span><span class="l-ko">사업 개요</span></h2>
     <dl>
-      <dt>Regencies</dt><dd>Biak Numfor and Mamberamo Raya (Papua); Asmat and Mappi (South Papua); Fakfak and Pegunungan Arfak (West Papua); Raja Ampat (Southwest Papua)</dd>
-      <dt>Facilities</dt><dd>55 Puskesmas, of which 18 BEmONC; 9 CEmONC referral hospitals</dd>
-      <dt>Evaluation</dt><dd>Difference-in-differences against three terrain-matched comparison regencies, with survey rounds in 2027, 2028 and 2029</dd>
-      <dt>Partners</dt><dd>KOICA · UNICEF Indonesia · OHCC, Universitas Cenderawasih · Seoul National University expert team</dd>
+      <dt><span class="l-en">Regencies</span><span class="l-ko">대상 군</span></dt>
+      <dd><span class="l-en">Biak Numfor and Mamberamo Raya (Papua); Asmat and Mappi (South Papua); Fakfak and Pegunungan Arfak (West Papua); Raja Ampat (Southwest Papua)</span><span class="l-ko">Biak Numfor, Mamberamo Raya(파푸아주); Asmat, Mappi(남파푸아주); Fakfak, Pegunungan Arfak(서파푸아주); Raja Ampat(서남파푸아주)</span></dd>
+      <dt><span class="l-en">Facilities</span><span class="l-ko">대상 시설</span></dt>
+      <dd><span class="l-en">55 Puskesmas, of which 18 BEmONC; 9 CEmONC referral hospitals</span><span class="l-ko">보건소(Puskesmas) 55개(BEmONC 18개 포함), CEmONC 전원 병원 9개</span></dd>
+      <dt><span class="l-en">Evaluation</span><span class="l-ko">평가 설계</span></dt>
+      <dd><span class="l-en">Difference-in-differences against three terrain-matched comparison regencies, with survey rounds in 2027, 2028 and 2029</span><span class="l-ko">지형 기준으로 매칭한 비교군 3개 군 대비 이중차분(DiD), 2027·2028·2029년 3회 조사</span></dd>
+      <dt><span class="l-en">Partners</span><span class="l-ko">참여 기관</span></dt>
+      <dd><span class="l-en">KOICA · UNICEF Indonesia · OHCC, Universitas Cenderawasih · Seoul National University expert team</span><span class="l-ko">KOICA · UNICEF 인도네시아 · OHCC(Cenderawasih 대학교) · 서울대학교 전문가팀</span></dd>
     </dl>
   </section>
 
   <section>
-    <h2>Monitoring</h2>
+    <h2><span class="l-en">Programme design</span><span class="l-ko">사업 설계</span></h2>
     <div class="list">
-      <a class="item" href="dashboard/">
-        <span class="t">Performance dashboard</span>
-        <span class="d">Programme performance (Track 1) and survey quality (Track 2) dashboards. Placeholder until the baseline survey begins</span>
-        <span class="m">In preparation</span>
+      <a class="item" href="pdm/">
+        <span class="t"><span class="l-en">Project Design Matrix (PDM)</span><span class="l-ko">사업 설계 일람표(PDM)</span></span>
+        <span class="d"><span class="l-en">Impact, outcomes and outputs with indicators, baselines, yearly targets, means of verification, activities and assumptions</span><span class="l-ko">영향·성과·산출물별 지표, 기초선, 연차별 목표, 검증수단, 활동, 중요 가정</span></span>
+        <span class="m"><span class="l-en">PD, March 2025</span><span class="l-ko">PD, 2025년 3월</span></span>
       </a>
     </div>
   </section>
 
   <section>
-    <h2>Maps</h2>
+    <h2><span class="l-en">Monitoring</span><span class="l-ko">모니터링</span></h2>
+    <div class="list">
+      <a class="item" href="dashboard/">
+        <span class="t"><span class="l-en">Performance dashboard</span><span class="l-ko">성과관리 대시보드</span></span>
+        <span class="d"><span class="l-en">Programme performance (Track 1) and survey quality (Track 2) dashboards. Placeholder until the baseline survey begins</span><span class="l-ko">사업 성과(트랙 1) 및 조사 품질(트랙 2) 대시보드. 기초선 조사 시작 전까지 틀만 게시</span></span>
+        <span class="m"><span class="l-en">In preparation</span><span class="l-ko">준비 중</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="l-en">Maps</span><span class="l-ko">지도</span></h2>
     <div class="list">
       <a class="item" href="maps/study-sites.html">
-        <span class="t">Study sites</span>
-        <span class="d">Project Puskesmas and BEmONC sub-districts, CEmONC hospitals, and the comparison regencies, by sub-district</span>
-        <span class="m">Updated 2 Nov 2026</span>
+        <span class="t"><span class="l-en">Study sites</span><span class="l-ko">조사 대상 지역</span></span>
+        <span class="d"><span class="l-en">Project Puskesmas and BEmONC sub-districts, CEmONC hospitals, and the comparison regencies, by sub-district</span><span class="l-ko">사업 보건소와 BEmONC 소지역(subdistrict), CEmONC 병원, 비교군을 소지역 단위로 표시</span></span>
+        <span class="m"><span class="l-en">Updated 2 Nov 2026</span><span class="l-ko">2026.11.2 갱신</span></span>
       </a>
     </div>
   </section>
 
   <footer>
-    <div>Maintained by the evaluation research team.</div>
+    <div><span class="l-en">Maintained by the evaluation research team.</span><span class="l-ko">평가 연구팀 관리.</span></div>
   </footer>
 </div>
 </body>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-en="Papua MNCH Performance Dashboard" data-title-ko="파푸아 MNCH 성과관리 대시보드">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,7 +7,9 @@
 <title>Papua MNCH Performance Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<script src="../assets/lang.js"></script>
+<link rel="stylesheet" href="../assets/lang.css">
 <style>
 /* Placeholder dashboard: two track bands (programme performance / survey quality), each with
    the planned panels drawn as empty frames. Same palette as the site; traffic-light hues are semantic only. */
@@ -15,7 +17,7 @@
   --bg:#f5f7f6; --paper:#ffffff; --fg:#17201f; --muted:#5a6866; --faint:#8a9592; --line:#d5dddb;
   --treat:#2a8a80; --treat-soft:#d3e8e3; --hatch:#e9eeec;
   --ok:#3c8d5a; --warn:#c99a2e; --bad:#b23a48; --na:#c3cbc8;
-  --f-body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Public Sans","Noto Sans KR","Helvetica Neue",Arial,sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   color-scheme:light;
 }
@@ -87,6 +89,9 @@ ul.plain{margin:0;padding-left:18px;display:grid;gap:6px;max-width:80ch}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
 .wrap > *,.track > *{min-width:0}
+html.ko .eyebrow,html.ko h3,html.ko th,html.ko .pill{font-family:var(--f-body);letter-spacing:0;text-transform:none}
+html.ko h3,html.ko thead th{font-weight:600}
+a.ph{text-decoration:none}a.ph:hover{text-decoration:underline}
 :focus-visible{outline:2px solid var(--treat);outline-offset:2px}
 @media (max-width:820px){.cols,.two{grid-template-columns:1fr}}
 </style>
@@ -94,26 +99,29 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
 <body>
 <div class="wrap">
   <header>
-    <a class="back" href="../">← Papua MNCH evaluation site</a>
-    <div class="eyebrow" style="margin-top:14px">성과관리 대시보드 · Real-time feedback system</div>
-    <h1>Performance dashboard</h1>
-    <p class="lede">A two-track dashboard for the KOICA–UNICEF Papua MNCH programme. Track 1 shows programme progress against PDM targets by regency, for the Project Steering Committee and KOICA. Track 2 tracks the quality of the evaluation survey as fieldwork happens.</p>
+    <div class="topbar">
+      <a class="back" href="../"><span class="l-en">← Papua MNCH evaluation site</span><span class="l-ko">← 파푸아 MNCH 평가 사이트</span></a>
+      <div class="lang-switch" role="group" aria-label="Language / 언어"><button type="button" data-set="en" aria-pressed="true">EN</button><button type="button" data-set="ko" aria-pressed="false">한국어</button></div>
+    </div>
+    <div class="eyebrow" style="margin-top:14px"><span class="l-en">Performance management · Real-time feedback system</span><span class="l-ko">성과관리 대시보드 · 실시간 환류체계</span></div>
+    <h1><span class="l-en">Performance dashboard</span><span class="l-ko">성과관리 대시보드</span></h1>
+    <p class="lede"><span class="l-en">A two-track dashboard for the KOICA–UNICEF Papua MNCH programme. Track 1 shows programme progress against PDM targets by regency, for the Project Steering Committee and KOICA. Track 2 tracks the quality of the evaluation survey as fieldwork happens.</span><span class="l-ko">KOICA–UNICEF 파푸아 MNCH 사업의 2개 트랙 대시보드. 트랙 1은 사업운영위원회(PSC)와 KOICA를 위해 군별 PDM 목표 대비 사업 성과를 보여주고, 트랙 2는 현장조사 기간 중 평가 조사의 품질을 실시간으로 점검함.</span></p>
   </header>
 
-  <div class="banner"><span class="dot" aria-hidden="true"></span><div><b>Placeholder.</b> No data is shown yet. The panels below show the planned layout and indicators. Track 1 depends on the review of UNICEF data-sharing arrangements described below. Track 2 goes live with the baseline survey (fieldwork May–July 2027).</div></div>
+  <div class="banner"><span class="dot" aria-hidden="true"></span><div><span class="l-en"><b>Placeholder.</b> No data is shown yet. The panels below show the planned layout and indicators. Track 1 depends on the review of UNICEF data-sharing arrangements described below. Track 2 goes live with the baseline survey (fieldwork May–July 2027).</span><span class="l-ko"><b>준비 중.</b> 아직 표시되는 자료는 없음. 아래 패널은 계획된 화면 구성과 지표를 보여줌. 트랙 1은 아래에 설명한 UNICEF 자료 공유 검토 결과에 따라 도입하며, 트랙 2는 기초선 조사(2027년 5~7월 현장조사)와 함께 가동함.</span></div></div>
 
   <section aria-labelledby="h-cmp">
-    <h3 id="h-cmp">The two tracks</h3>
+    <h3 id="h-cmp"><span class="l-en">The two tracks</span><span class="l-ko">트랙별 운영 설계</span></h3>
     <div class="tbl">
       <table class="cmp">
-        <thead><tr><th></th><th>Track 1 · Programme performance <span class="pill cond">Conditional</span></th><th>Track 2 · Survey quality <span class="pill conf">Confirmed</span></th></tr></thead>
+        <thead><tr><th></th><th><span class="l-en">Track 1 · Programme performance</span><span class="l-ko">트랙 1 · 사업 성과 대시보드</span> <span class="pill cond"><span class="l-en">Conditional</span><span class="l-ko">조건부</span></span></th><th><span class="l-en">Track 2 · Survey quality</span><span class="l-ko">트랙 2 · 조사 품질 대시보드</span> <span class="pill conf"><span class="l-en">Confirmed</span><span class="l-ko">확정</span></span></th></tr></thead>
         <tbody>
-          <tr><th>Data source</th><td>HMIS and UNICEF programme data, under a data-sharing protocol</td><td>Evaluation survey data collected by the research team (CAPI)</td></tr>
-          <tr><th>Contents</th><td>Achievement against target by regency and indicator (traffic-light), date of latest data, alerts for missing data and attrition</td><td>Fieldwork progress and completion rate, back-check agreement, GPS flags, attrition and other quality indicators</td></tr>
-          <tr><th>Update frequency</th><td>Monthly for HMIS-linked indicators; each survey round for field-check and survey indicators</td><td>Daily during fieldwork, linked to next-day high-frequency checks</td></tr>
-          <tr><th>Users</th><td>Circulated before PSC meetings; open to KOICA headquarters and the Indonesia office for decision-making</td><td>Research team, field team (OHCC) and KOICA, for survey quality control</td></tr>
-          <tr><th>Start</th><td>Built within the agreed scope after a review of UNICEF data policy and system compatibility within three months of project start; if not agreed, replaced by a monthly performance brief and a semi-annual integrated scorecard</td><td>Runs from the baseline survey</td></tr>
-          <tr><th>Privacy and security</th><td>Aggregate level only; access rights set by user group; hosting and data retention location agreed in advance</td><td>No respondent identifiers; aggregate quality indicators only</td></tr>
+          <tr><th><span class="l-en">Data source</span><span class="l-ko">자료원</span></th><td><span class="l-en">HMIS and UNICEF programme data, under a data-sharing protocol</span><span class="l-ko">HMIS·UNICEF 제공 자료(자료 공유 프로토콜 기반)</span></td><td><span class="l-en">Evaluation survey data collected by the research team (CAPI)</span><span class="l-ko">연구진 자체 수집 심층조사(CAPI) 자료</span></td></tr>
+          <tr><th><span class="l-en">Contents</span><span class="l-ko">주요 구성</span></th><td><span class="l-en">Achievement against target by regency and indicator (traffic-light), date of latest data, alerts for missing data and attrition</span><span class="l-ko">군별·지표별 목표 대비 달성도(traffic-light 방식), 자료 최신 반영일, 위험요인(결측·이탈률) 경보</span></td><td><span class="l-en">Fieldwork progress and completion rate, back-check agreement, GPS flags, attrition and other quality indicators</span><span class="l-ko">조사 진척·완료율, 백체크 일치율, GPS 이상, 이탈률 등 품질지표</span></td></tr>
+          <tr><th><span class="l-en">Update frequency</span><span class="l-ko">갱신 주기</span></th><td><span class="l-en">Monthly for HMIS-linked indicators; each survey round for field-check and survey indicators</span><span class="l-ko">HMIS 연계 지표 월 단위, 현장점검·설문 기반 지표는 조사 시점마다</span></td><td><span class="l-en">Daily during fieldwork, linked to next-day high-frequency checks</span><span class="l-ko">조사 기간 중 일 단위(익일 HFC 연동)</span></td></tr>
+          <tr><th><span class="l-en">Users</span><span class="l-ko">이용·활용</span></th><td><span class="l-en">Circulated before PSC meetings; open to KOICA headquarters and the Indonesia office for decision-making</span><span class="l-ko">PSC 사전 배포, KOICA 본부·현지사무소 상시 열람, 의사결정 환류</span></td><td><span class="l-en">Research team, field team (OHCC) and KOICA, for survey quality control</span><span class="l-ko">연구진·현지팀(OHCC)·KOICA 실시간 열람, 조사 품질관리</span></td></tr>
+          <tr><th><span class="l-en">Start</span><span class="l-ko">도입 조건</span></th><td><span class="l-en">Built within the agreed scope after a review of UNICEF data policy and system compatibility within three months of project start; if not agreed, replaced by a monthly performance brief and a semi-annual integrated scorecard</span><span class="l-ko">착수 후 3개월 내 UNICEF 정책·호환성 검토 후 합의 범위 내 구축. 미합의 시 월간 성과 브리프·반기 통합 성과표로 대체</span></td><td><span class="l-en">Runs from the baseline survey</span><span class="l-ko">확정 운영(기초선 조사부터)</span></td></tr>
+          <tr><th><span class="l-en">Privacy and security</span><span class="l-ko">개인정보·보안</span></th><td><span class="l-en">Aggregate level only; access rights set by user group; hosting and data retention location agreed in advance</span><span class="l-ko">집계 수준 표시, 이용 주체별 접근권한 구분, 호스팅·보존 위치 사전 협의</span></td><td><span class="l-en">No respondent identifiers; aggregate quality indicators only</span><span class="l-ko">응답자 식별정보 미표시(집계 품질지표만 표시)</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -122,32 +130,32 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
   <!-- TRACK 1 -->
   <section class="track" aria-labelledby="h-t1">
     <div class="track-head">
-      <h2 id="h-t1">Track 1 · Programme performance <span class="pill cond">Conditional</span></h2>
-      <div class="meta"><span>Source: <b>HMIS and UNICEF programme data</b></span><span>Updates: <b>monthly (HMIS) · per survey round</b></span><span>Status: <b>pending UNICEF data-policy review</b></span></div>
+      <h2 id="h-t1"><span class="l-en">Track 1 · Programme performance</span><span class="l-ko">트랙 1 · 사업 성과 대시보드</span> <span class="pill cond"><span class="l-en">Conditional</span><span class="l-ko">조건부</span></span></h2>
+      <div class="meta"><span><span class="l-en">Source:</span><span class="l-ko">자료원:</span> <b><span class="l-en">HMIS and UNICEF programme data</span><span class="l-ko">HMIS·UNICEF 사업 자료</span></b></span><span><span class="l-en">Updates:</span><span class="l-ko">갱신:</span> <b><span class="l-en">monthly (HMIS) · per survey round</span><span class="l-ko">월 단위(HMIS) · 조사 시점마다</span></b></span><span><span class="l-en">Status:</span><span class="l-ko">상태:</span> <b><span class="l-en">pending UNICEF data-policy review</span><span class="l-ko">UNICEF 자료정책 검토 대기</span></b></span></div>
     </div>
 
     <div class="panel">
-      <h3>Achievement against target · by regency</h3>
+      <h3><span class="l-en">Achievement against target · by regency</span><span class="l-ko">군별 목표 대비 달성도</span></h3>
       <div class="legend">
-        <span><i class="sw ok"></i>On track</span><span><i class="sw warn"></i>Behind target</span><span><i class="sw bad"></i>Off track</span><span><i class="sw"></i>No data yet</span>
+        <span><i class="sw ok"></i><span class="l-en">On track</span><span class="l-ko">정상</span></span><span><i class="sw warn"></i><span class="l-en">Behind target</span><span class="l-ko">미흡</span></span><span><i class="sw bad"></i><span class="l-en">Off track</span><span class="l-ko">위험</span></span><span><i class="sw"></i><span class="l-en">No data yet</span><span class="l-ko">자료 없음</span></span>
       </div>
       <div class="tbl" style="border:none">
         <table class="matrix">
-          <thead><tr><th>PDM indicator</th><th class="n">Mamberamo Raya</th><th class="n">Biak Numfor</th><th class="n">Fakfak</th><th class="n">Peg. Arfak</th><th class="n">Raja Ampat</th><th class="n">Mappi</th><th class="n">Asmat</th></tr></thead>
+          <thead><tr><th><span class="l-en">PDM indicator</span><span class="l-ko">PDM 지표</span></th><th class="n">Mamberamo Raya</th><th class="n">Biak Numfor</th><th class="n">Fakfak</th><th class="n">Peg. Arfak</th><th class="n">Raja Ampat</th><th class="n">Mappi</th><th class="n">Asmat</th></tr></thead>
           <tbody id="matrix"></tbody>
         </table>
       </div>
-      <p class="ph">Indicator list follows the programme PDM and will be confirmed with UNICEF. Each cell will also show the date of the latest data.</p>
+      <p class="ph"><span class="l-en">Indicator list follows the programme <a href="../pdm/">PDM</a> and will be confirmed with UNICEF. Each cell will also show the date of the latest data.</span><span class="l-ko">지표 목록은 사업 <a href="../pdm/">PDM</a>을 따르며 UNICEF와 협의하여 확정함. 각 칸에는 자료 최신 반영일도 함께 표시함.</span></p>
     </div>
 
     <div class="two">
       <div class="panel">
-        <h3>Data alerts</h3>
-        <p class="ph">Flags for missing HMIS months, late reporting and attrition, by regency.</p>
+        <h3><span class="l-en">Data alerts</span><span class="l-ko">자료 경보</span></h3>
+        <p class="ph"><span class="l-en">Flags for missing HMIS months, late reporting and attrition, by regency.</span><span class="l-ko">군별 HMIS 결측월, 보고 지연, 이탈률 경보.</span></p>
       </div>
       <div class="panel">
-        <h3>If Track 1 is not agreed</h3>
-        <p style="font-size:14px">The same feedback is delivered as a <b>monthly performance brief</b> and a <b>semi-annual integrated scorecard</b>, distributed to the PSC and KOICA.</p>
+        <h3><span class="l-en">If Track 1 is not agreed</span><span class="l-ko">트랙 1 미합의 시</span></h3>
+        <p style="font-size:14px"><span class="l-en">The same feedback is delivered as a <b>monthly performance brief</b> and a <b>semi-annual integrated scorecard</b>, distributed to the PSC and KOICA.</span><span class="l-ko">같은 환류 기능을 <b>월간 성과 브리프</b>와 <b>반기 통합 성과표</b>로 대신하여 PSC와 KOICA에 배포함.</span></p>
       </div>
     </div>
   </section>
@@ -155,28 +163,28 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
   <!-- TRACK 2 -->
   <section class="track" aria-labelledby="h-t2">
     <div class="track-head">
-      <h2 id="h-t2">Track 2 · Survey quality <span class="pill conf">Confirmed</span></h2>
-      <div class="meta"><span>Source: <b>DiD household survey, CAPI</b></span><span>Updates: <b>daily during fieldwork</b></span><span>First data: <b>baseline, May 2027</b></span></div>
+      <h2 id="h-t2"><span class="l-en">Track 2 · Survey quality</span><span class="l-ko">트랙 2 · 조사 품질 대시보드</span> <span class="pill conf"><span class="l-en">Confirmed</span><span class="l-ko">확정</span></span></h2>
+      <div class="meta"><span><span class="l-en">Source:</span><span class="l-ko">자료원:</span> <b><span class="l-en">DiD household survey, CAPI</span><span class="l-ko">DiD 가구조사(CAPI)</span></b></span><span><span class="l-en">Updates:</span><span class="l-ko">갱신:</span> <b><span class="l-en">daily during fieldwork</span><span class="l-ko">조사 기간 중 매일</span></b></span><span><span class="l-en">First data:</span><span class="l-ko">최초 자료:</span> <b><span class="l-en">baseline, May 2027</span><span class="l-ko">기초선, 2027년 5월</span></b></span></div>
     </div>
 
     <div class="panel">
-      <h3>Quality indicators · current round</h3>
+      <h3><span class="l-en">Quality indicators · current round</span><span class="l-ko">품질지표 · 현재 회차</span></h3>
       <div class="tiles">
-        <div class="tile"><span class="l">Completion rate</span><span class="v">—</span><span class="s">Completed ÷ target interviews</span></div>
-        <div class="tile"><span class="l">Back-check agreement</span><span class="v">—</span><span class="s">Key items matched on 10–15% re-visits</span></div>
-        <div class="tile"><span class="l">GPS flags</span><span class="v">—</span><span class="s">Interviews outside the sampled village</span></div>
-        <div class="tile"><span class="l">Attrition</span><span class="v">—</span><span class="s">Panel respondents not re-interviewed</span></div>
-        <div class="tile"><span class="l">Third-party presence</span><span class="v">—</span><span class="s">Sensitive module with others present</span></div>
-        <div class="tile"><span class="l">Audio audit pass rate</span><span class="v">—</span><span class="s">Recorded segments meeting protocol</span></div>
+        <div class="tile"><span class="l"><span class="l-en">Completion rate</span><span class="l-ko">완료율</span></span><span class="v">—</span><span class="s"><span class="l-en">Completed ÷ target interviews</span><span class="l-ko">완료 ÷ 목표 면접 수</span></span></div>
+        <div class="tile"><span class="l"><span class="l-en">Back-check agreement</span><span class="l-ko">백체크 일치율</span></span><span class="v">—</span><span class="s"><span class="l-en">Key items matched on 10–15% re-visits</span><span class="l-ko">10~15% 재방문 시 핵심문항 일치</span></span></div>
+        <div class="tile"><span class="l"><span class="l-en">GPS flags</span><span class="l-ko">GPS 이상</span></span><span class="v">—</span><span class="s"><span class="l-en">Interviews outside the sampled village</span><span class="l-ko">표본 마을 밖에서 실시된 면접</span></span></div>
+        <div class="tile"><span class="l"><span class="l-en">Attrition</span><span class="l-ko">이탈률</span></span><span class="v">—</span><span class="s"><span class="l-en">Panel respondents not re-interviewed</span><span class="l-ko">재면접하지 못한 패널 응답자</span></span></div>
+        <div class="tile"><span class="l"><span class="l-en">Third-party presence</span><span class="l-ko">제3자 동석률</span></span><span class="v">—</span><span class="s"><span class="l-en">Sensitive module with others present</span><span class="l-ko">민감모듈 응답 시 타인 동석</span></span></div>
+        <div class="tile"><span class="l"><span class="l-en">Audio audit pass rate</span><span class="l-ko">오디오 오딧 통과율</span></span><span class="v">—</span><span class="s"><span class="l-en">Recorded segments meeting protocol</span><span class="l-ko">녹음 구간의 절차 준수</span></span></div>
       </div>
     </div>
 
     <div class="cols">
       <div class="panel">
-        <h3>Progress by regency</h3>
+        <h3><span class="l-en">Progress by regency</span><span class="l-ko">군별 진척</span></h3>
         <div class="tbl" style="border:none">
           <table class="reg">
-            <thead><tr><th>Regency</th><th class="n">Target</th><th class="n">Done</th><th>Progress</th></tr></thead>
+            <thead><tr><th><span class="l-en">Regency</span><span class="l-ko">군</span></th><th class="n"><span class="l-en">Target</span><span class="l-ko">목표</span></th><th class="n"><span class="l-en">Done</span><span class="l-ko">완료</span></th><th><span class="l-en">Progress</span><span class="l-ko">진척</span></th></tr></thead>
             <tbody>
               <tr><td>Mamberamo Raya</td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
               <tr><td>Biak Numfor</td><td class="n">120</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
@@ -185,54 +193,62 @@ footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
               <tr><td>Raja Ampat</td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
               <tr><td>Mappi</td><td class="n">120</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
               <tr><td>Asmat</td><td class="n">120</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
-              <tr><td>Kepulauan Yapen <span class="ph">comparison</span></td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
-              <tr><td>Merauke <span class="ph">comparison</span></td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
-              <tr><td>Jayawijaya <span class="ph">comparison</span></td><td class="n">40</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
-              <tr class="sub"><td>Total</td><td class="n">920</td><td class="n dash">—</td><td></td></tr>
+              <tr><td>Kepulauan Yapen <span class="ph"><span class="l-en">comparison</span><span class="l-ko">비교군</span></span></td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Merauke <span class="ph"><span class="l-en">comparison</span><span class="l-ko">비교군</span></span></td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Jayawijaya <span class="ph"><span class="l-en">comparison</span><span class="l-ko">비교군</span></span></td><td class="n">40</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr class="sub"><td><span class="l-en">Total</span><span class="l-ko">합계</span></td><td class="n">920</td><td class="n dash">—</td><td></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="ph">Targets: women per survey round, draft allocation of 30 Oct 2026 (subject to revision).</p>
+        <p class="ph"><span class="l-en">Targets: women per survey round, draft allocation of 30 Oct 2026 (subject to revision).</span><span class="l-ko">목표: 조사 회차당 여성 응답자 수, 2026.10.30 표본 배분안 기준(변경 가능).</span></p>
       </div>
       <div class="panel">
-        <h3>Daily interviews and flags</h3>
-        <div class="chart"><span>Daily completed interviews and flagged interviews will appear here once fieldwork starts.</span></div>
-        <div class="axis"><span>Day 1</span><span>Fieldwork period</span><span>Day N</span></div>
-        <h3 style="margin-top:6px">Enumerator checks</h3>
-        <p class="ph">Per-enumerator interview length, outliers and straight-lining from the high-frequency checks, shown by enumerator code only.</p>
+        <h3><span class="l-en">Daily interviews and flags</span><span class="l-ko">일별 면접 및 이상 건수</span></h3>
+        <div class="chart"><span><span class="l-en">Daily completed interviews and flagged interviews will appear here once fieldwork starts.</span><span class="l-ko">현장조사가 시작되면 일별 완료 면접과 이상 면접 건수가 표시됨.</span></span></div>
+        <div class="axis"><span><span class="l-en">Day 1</span><span class="l-ko">1일차</span></span><span><span class="l-en">Fieldwork period</span><span class="l-ko">조사 기간</span></span><span><span class="l-en">Day N</span><span class="l-ko">N일차</span></span></div>
+        <h3 style="margin-top:6px"><span class="l-en">Enumerator checks</span><span class="l-ko">조사원별 점검</span></h3>
+        <p class="ph"><span class="l-en">Per-enumerator interview length, outliers and straight-lining from the high-frequency checks, shown by enumerator code only.</span><span class="l-ko">HFC 결과에 따른 조사원별 면접 소요시간, 이상치, 일자형 응답(straight-lining). 조사원 코드로만 표시함.</span></p>
       </div>
     </div>
   </section>
 
   <section class="track" aria-labelledby="h-impl">
-    <h2 id="h-impl">Implementation</h2>
-    <ul class="plain">
+    <h2 id="h-impl"><span class="l-en">Implementation</span><span class="l-ko">구현 및 운영</span></h2>
+    <ul class="plain l-en">
       <li><b>Build:</b> a lightweight setup using existing open-source dashboard tools, with no licence costs. The specific tools and access-rights arrangements will be confirmed after a feasibility review reported to KOICA within three months of project start.</li>
       <li><b>Maintenance:</b> hosting, updates and fixes are handled by the evaluation team for the duration of the contract.</li>
       <li><b>Fallback outputs:</b> the monthly brief and semi-annual scorecard are generated automatically alongside the dashboard, so feedback continues even if the dashboard cannot be maintained.</li>
       <li><b>Handover:</b> at least three months of parallel operation with UNICEF and counterpart staff before the end of the project, with user and administrator manuals included in the handover package.</li>
       <li><b>Running costs after handover:</b> use of existing UNICEF and counterpart IT infrastructure is considered first; annual running costs are estimated and reported to KOICA one year before the end of the project.</li>
     </ul>
+    <ul class="plain l-ko">
+      <li><b>구현 방식:</b> 별도의 고비용 시스템 대신 기존 오픈소스 대시보드 도구를 활용한 경량형으로 구축하며 라이선스 비용은 발생하지 않음. 세부 도구와 접근권한 체계는 착수 후 3개월 이내 도입 타당성 검토 결과를 KOICA에 보고한 후 확정함.</li>
+      <li><b>유지보수:</b> 용역기간 중 호스팅·업데이트·오류 대응은 수행팀이 전담함.</li>
+      <li><b>대체 산출물:</b> 월간 성과 브리프·반기 통합 성과표 자동 생성 경로를 병행 설계하여, 대시보드 운영이 어려워도 환류 기능이 유지되도록 함.</li>
+      <li><b>이양:</b> 종료 전 최소 3개월간 UNICEF·수원기관 담당자와 병행 운영(shadowing)하고, 운영·관리자 매뉴얼을 성과관리 이관 패키지에 포함함.</li>
+      <li><b>이양 후 운영 예산:</b> UNICEF·수원기관의 기존 IT 인프라·인력 활용을 우선 검토하고, 종료 1년 전 연간 운영 소요(비용·인력)를 산정하여 KOICA에 보고함.</li>
+    </ul>
   </section>
 
   <footer>
-    <div>Maintained by the evaluation research team.</div>
+    <div><span class="l-en">Maintained by the evaluation research team.</span><span class="l-ko">평가 연구팀 관리.</span></div>
   </footer>
 </div>
 <script>
-// Track 1 matrix: planned indicators, no data yet
+// Track 1 matrix: planned indicators, no data yet; links point to the PDM page
 const IND = [
-  ["Facility-based deliveries", "PDM outcome 2"],
-  ["ANC (6 contacts)", "PDM output 2.3"],
-  ["BEmONC readiness in project Puskesmas", "PDM outcome 1"],
-  ["Obstetric and neonatal referrals", "PDM outcome 2"],
-  ["Communities with improved MNCH knowledge and practice", "PDM outcome 3"],
-  ["Villages running birth preparedness (BPCR)", "PDM output 3.2"],
+  ["Facility-based deliveries", "의료시설 분만", "Outcome 2", "성과 2", "outcome-2"],
+  ["ANC (6 contacts)", "산전관리(ANC) 6회", "Output 2.3", "산출물 2.3", "output-2-3"],
+  ["BEmONC readiness in project Puskesmas", "사업 보건소 BEmONC 수행능력", "Outcome 1", "성과 1", "outcome-1"],
+  ["Obstetric and neonatal referrals", "모성·신생아 합병증 전원", "Outcome 2", "성과 2", "outcome-2"],
+  ["Communities with improved MNCH knowledge and practice", "MNCH 관련 KAP가 향상된 지역사회", "Outcome 3", "성과 3", "outcome-3"],
+  ["Villages running birth preparedness (BPCR)", "BPCR 운영 마을", "Output 3.2", "산출물 3.2", "output-3-2"],
 ];
 const tb = document.getElementById("matrix");
-IND.forEach(([name, ref]) => {
+IND.forEach(([en, ko, ren, rko, a]) => {
   const tr = document.createElement("tr");
-  tr.innerHTML = `<td>${name}<br><span class="ph">${ref}</span></td>` + Array.from({length:7}, () => `<td class="c"><i class="sw" title="No data yet"></i></td>`).join("");
+  tr.innerHTML = `<td><span class="l-en">${en}</span><span class="l-ko">${ko}</span><br><a class="ph" href="../pdm/#${a}">PDM <span class="l-en">${ren}</span><span class="l-ko">${rko}</span></a></td>` +
+    Array.from({length:7}, () => `<td class="c"><i class="sw"></i></td>`).join("");
   tb.appendChild(tr);
 });
 </script>
