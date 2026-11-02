@@ -2,6 +2,18 @@
 
 Sources and build decisions for each page on the site. These notes are for the team maintaining the site and are not linked from the pages themselves.
 
+## Landing page (`index.html`)
+
+### Sources
+
+- Programme facts (regencies, 55 Puskesmas / 18 BEmONC, 9 CEmONC hospitals): `Intervention_Sites_KOICA.xlsx` (UNICEF Indonesia)
+- Evaluation design (DiD with three terrain-matched comparison regencies; survey rounds 2027–2029): 착수보고 slides and 착수 현장메모 (2026.11.01)
+- Map boundaries referenced on the site: Kemendagri kecamatan layer (2018)
+
+### Decisions
+
+- The expert team is listed as the Seoul National University expert team, and no contact address is given.
+
 ## Performance dashboard (`dashboard/index.html`)
 
 Placeholder page, added 2 Nov 2026. No data is shown; every value is "—".
@@ -42,6 +54,7 @@ Added 2 Nov 2026 (zoom and pan added the same day).
 - Sub-district boundaries: Kemendagri kecamatan layer (2018 semester 1), from the `Alf-Anas/batas-administrasi-indonesia` GitHub repository (`2020/Batas Kecamatan SHP.zip`)
 - Comparison regencies and per-regency survey allocation: 착수 현장메모 (2026.11.01) and 착수보고 slides
 - Province assignment: the 2022 split of Papua and Papua Barat into six provinces
+- Note on the page that Jayapura Provincial Hospital may be replaced by Sorong Hospital: *Hospital* sheet of the UNICEF workbook
 
 ### Decisions
 
