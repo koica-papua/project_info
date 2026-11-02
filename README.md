@@ -1,6 +1,6 @@
 # Papua MNCH Evaluation: shared site
 
-Static site for sharing material on the KOICA–UNICEF Papua maternal and newborn health evaluation among KOICA, UNICEF, OHCC (Universitas Cenderawasih) and the SNU expert team. Served with GitHub Pages from the `main` branch root at https://dshpark.com/koica_papua/.
+Static site for sharing material on the KOICA–UNICEF Papua maternal and newborn health evaluation among KOICA, UNICEF, OHCC (Universitas Cenderawasih) and the SNU expert team. Served with GitHub Pages from the `main` branch root at https://koica-papua.github.io/project_info/.
 
 The site is public to anyone with the link. `robots.txt` and a `noindex` meta tag keep it out of search engines, but they do not restrict access.
 
