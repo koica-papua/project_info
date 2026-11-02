@@ -47,7 +47,7 @@ Placeholder page, added 2 Nov 2026. No data is shown; every value is "—".
 - 사업수행계획서 (기술협상 3차 수정본, 2026.09.03; file `1. 제안서I_기술협상_수정본_20260830_260903_KOICA 3차 검토_SNU_하이라이트제거.pdf`)
   - Section III, 실시간 환류체계: 성과관리 대시보드 (pp. 77–79): two-track design, comparison table, implementation, maintenance, handover and running-cost text
   - Section 2-4, survey quality control: Track 2 quality indicators (completion rate, back-check agreement, GPS flags, attrition) and protocol compliance indicators (third-party presence, audio audit pass rate, back-check agreement)
-- 착수보고 slides (`파푸아_심층성과관리_착수보고_영향평가_v2.pptx`, slide 5): mapping of survey modules to PDM indicators used in the Track 1 grid
+  - Section III, 성과관리틀의 고도화 > 지표별 대체자료 확보 방안 (pp. 79–80): key indicators per outcome and their primary and alternative data sources, used for the Track 1 grid; and 지표 수의 우선순위화 (key indicators reviewed semi-annually and at the PSC, other indicators annually)
 - DiD sample allocation, OHCC budget draft of 30 Oct 2026 (`파푸아_착수출장_현장메모_박성호_20261101_v2.docx`): per-regency targets in the Track 2 progress table
 
 ### Decisions
@@ -55,16 +55,18 @@ Placeholder page, added 2 Nov 2026. No data is shown; every value is "—".
 - Track numbering is reversed from the 사업수행계획서 (2 Nov 2026): the plan's 트랙 1 (조사 품질 대시보드) is Track 2 on the page, and its 트랙 2 (사업 성과 대시보드) is Track 1. Programme performance is shown first.
 - Track 2 start is given as the baseline survey, May 2027, following the inception-trip decision (survey rounds May–July 2027/2028/2029). The 사업수행계획서 originally placed the baseline in 2026.
 - "Three months of project start" is used for the Track 1 review deadline, as in the plan (착수 후 3개월 이내); no calendar date is given on the page.
-- Track 1 indicators (provisional, to be confirmed with UNICEF):
+- Track 1 indicators follow the key-indicator table in the 사업수행계획서 (지표별 대체자료 확보 방안), changed on 2 Nov 2026 from an earlier list based on the inception slides:
 
-  | Indicator on page | PDM reference |
-  |---|---|
-  | Facility-based deliveries | Outcome 2 |
-  | ANC (6 contacts) | Output 2.3 |
-  | BEmONC readiness in project Puskesmas | Outcome 1 |
-  | Obstetric and neonatal referrals | Outcome 2 |
-  | Communities with improved MNCH knowledge and practice | Outcome 3 |
-  | Villages running birth preparedness (BPCR) | Output 3.2 |
+  | Key indicator in the plan | PDM | On page |
+  |---|---|---|
+  | EmONC 시설 역량 | Outcome 1-1, 1-2 | two rows (CEmONC, BEmONC) |
+  | 지역사회 활동 (CHW·Posyandu) | Output 1.1-2, 3.1-1 | two rows |
+  | 시설분만율 | Outcome 2-2 | one row |
+  | ANC 수진율 | Output 2.3-1 | one row |
+  | KAP·BPCR | Outcome 3-1, Output 3.2-1 | two rows |
+  | MMR·NMR (참고 지표) | Impact | two rows, marked as reference, not rated |
+
+  Rows are grouped by outcome. Each row shows the primary and alternative data sources from the same table. Outcome 2-1 (referrals) is not in the plan's key-indicator table and is therefore not on the page; like the other PDM indicators it is reviewed annually.
 
 - The sample targets (920 per round) predate the finding that the 55 project Puskesmas sit in 48 sub-districts; update the table if the allocation changes.
 - The site is public. Per the plan, the live dashboards need access rights by user group and an agreed hosting location, so live data should not be published on this site without that decision.

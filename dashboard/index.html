@@ -77,9 +77,15 @@ tbody th{font-weight:600;font-size:13px;color:var(--muted);white-space:nowrap}
 .chart span{position:absolute;inset:0;display:grid;place-items:center;color:var(--faint);font-size:13px;font-style:italic;text-align:center;padding:0 16px}
 .axis{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted);padding-left:4px}
 
-.matrix{min-width:760px}
+.matrix{min-width:900px}
 .matrix th.n{text-align:center}
-.matrix td.c{text-align:center}
+.matrix td.c{text-align:center;vertical-align:middle}
+.matrix tr.grp td{background:var(--bg);font-weight:600;font-size:12.5px;padding:7px 12px}
+.matrix td.ref{font-size:11.5px;color:var(--faint)}
+.matrix .srcl{display:block;margin-top:4px;font-size:11.5px;line-height:1.45;color:var(--muted)}
+.matrix a.code{font-family:var(--f-mono);font-size:12px;color:var(--treat);text-decoration:none;margin-right:4px}
+.matrix a.code:hover{text-decoration:underline}
+.matrix td:first-child{min-width:300px}
 .sw{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--na);vertical-align:middle}
 .sw.ok{background:var(--ok)}.sw.warn{background:var(--warn)}.sw.bad{background:var(--bad)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);align-items:center}
@@ -145,7 +151,7 @@ a.ph{text-decoration:none}a.ph:hover{text-decoration:underline}
           <tbody id="matrix"></tbody>
         </table>
       </div>
-      <p class="ph"><span class="l-en">Indicator list follows the programme <a href="../pdm/">PDM</a> and will be confirmed with UNICEF. Each cell will also show the date of the latest data.</span><span class="l-ko">지표 목록은 사업 <a href="../pdm/">PDM</a>을 따르며 UNICEF와 협의하여 확정함. 각 칸에는 자료 최신 반영일도 함께 표시함.</span></p>
+      <p class="ph"><span class="l-en">Key indicators for each outcome, with primary and alternative data sources, as set out in the work plan (사업수행계획서). The other <a href="../pdm/">PDM</a> indicators are reviewed annually. MMR and NMR are reference indicators and are not rated. The list will be confirmed with UNICEF; each cell will also show the date of the latest data.</span><span class="l-ko">사업수행계획서에 정한 성과별 핵심지표와 지표별 1차·대체 자료원. 나머지 <a href="../pdm/">PDM</a> 지표는 연차 단위로 점검함. 모성사망률·신생아사망률은 참고 지표로 달성도를 표시하지 않음. 지표 목록은 UNICEF와 협의하여 확정하며, 각 칸에는 자료 최신 반영일도 함께 표시함.</span></p>
     </div>
 
     <div class="two">
@@ -235,21 +241,42 @@ a.ph{text-decoration:none}a.ph:hover{text-decoration:underline}
   </footer>
 </div>
 <script>
-// Track 1 matrix: planned indicators, no data yet; links point to the PDM page
-const IND = [
-  ["Facility-based deliveries", "의료시설 분만", "Outcome 2", "성과 2", "outcome-2"],
-  ["ANC (6 contacts)", "산전관리(ANC) 6회", "Output 2.3", "산출물 2.3", "output-2-3"],
-  ["BEmONC readiness in project Puskesmas", "사업 보건소 BEmONC 수행능력", "Outcome 1", "성과 1", "outcome-1"],
-  ["Obstetric and neonatal referrals", "모성·신생아 합병증 전원", "Outcome 2", "성과 2", "outcome-2"],
-  ["Communities with improved MNCH knowledge and practice", "MNCH 관련 KAP가 향상된 지역사회", "Outcome 3", "성과 3", "outcome-3"],
-  ["Villages running birth preparedness (BPCR)", "BPCR 운영 마을", "Output 3.2", "산출물 3.2", "output-3-2"],
+// Track 1 matrix: the key indicators per outcome named in the 사업수행계획서
+// (성과관리틀의 고도화 > 지표별 대체자료 확보 방안), with their primary and alternative data sources.
+const B = (en, ko) => `<span class="l-en">${en}</span><span class="l-ko">${ko}</span>`;
+const SRC = {
+  emonc: [B("HMIS; DHO/PHO reports; baseline/endline reports","지역 HMIS, DHO/PHO 공식보고서, 기초/종료선 보고서"), B("Facility checks with the field-visit checklist; survey facility module","현장점검 체크리스트 기반 시설 직접 점검, 심층조사 시설 모듈")],
+  comm:  [B("Project activity reports; community assessment reports","사업활동 보고서, 지역사회 평가보고서"), B("Manual checks during field visits; CHW verbal reports; village leaders","현장점검 시 수기 확인·CHW 구두보고, 마을 지도자 확인")],
+  deliv: [B("HMIS; DHO/PHO reports","지역 HMIS, DHO/PHO 공식보고서"), B("Puskesmas delivery registers; evaluation survey","Puskesmas 분만대장 초록, 심층조사(기초/중간/종료선)")],
+  anc:   [B("Project activity reports; DHO reports; HMIS","사업활동 보고서, DHO 보고서, 지역 HMIS"), B("Puskesmas ANC registers; CHW reports; evaluation survey","Puskesmas ANC 대장, CHW 보고, 심층조사")],
+  kap:   [B("UNICEF reports; community assessment reports","보고서(UNICEF), 지역사회 평가보고서"), B("KAP and BPCR modules of the baseline/endline survey (own data)","MNCH 기초/종료선 심층조사 KAP·BPCR 모듈(자체 수집)")],
+  mmr:   [B("Ministry of Health statistics","보건부 공식통계"), B("HMIS; survey fertility module","지역 HMIS, 심층조사 출산력")],
+};
+const GROUPS = [
+  { h: B("Outcome 1 · Health workforce capacity","성과 1 · 보건의료인력 역량"), rows: [
+    ["1-1", B("Facilities with improved CEmONC performance","CEmONC 수행능력이 향상된 보건의료시설"), "outcome-1", "emonc"],
+    ["1-2", B("Facilities with improved BEmONC performance","BEmONC 수행능력이 향상된 보건의료시설"), "outcome-1", "emonc"],
+    ["1.1-2", B("Villages with a trained CHW","훈련받은 CHW를 보유한 마을"), "output-1-1", "comm"] ]},
+  { h: B("Outcome 2 · Service delivery","성과 2 · 의료서비스 제공"), rows: [
+    ["2-2", B("Facility-based deliveries","의료시설 분만율"), "outcome-2", "deliv"],
+    ["2.3-1", B("Pregnant women in hard-to-reach villages with 6 ANC contacts","접근 취약 마을 임산부 ANC 6회 수진율"), "output-2-3", "anc"] ]},
+  { h: B("Outcome 3 · Health-seeking behaviour","성과 3 · 지역사회 건강추구행위"), rows: [
+    ["3-1", B("Communities with improved MNCH KAP","MNCH 관련 KAP가 향상된 지역사회"), "outcome-3", "kap"],
+    ["3.1-1", B("Posyandu reached with IEC/BCC materials","IEC/BCC 자료가 제공된 Posyandu"), "output-3-1", "comm"],
+    ["3.2-1", B("Villages with a fully functioning BPCR programme","BPCR 프로그램이 완전히 운영되는 마을"), "output-3-2", "kap"] ]},
+  { h: B("Impact · reference indicators","영향 · 참고 지표"), ref: true, rows: [
+    ["MMR", B("Maternal mortality ratio (SDG 3.1.1)","모성사망률(SDG 3.1.1)"), "impact", "mmr"],
+    ["NMR", B("Neonatal mortality rate (SDG 3.2.2)","신생아사망률(SDG 3.2.2)"), "impact", "mmr"] ]},
 ];
 const tb = document.getElementById("matrix");
-IND.forEach(([en, ko, ren, rko, a]) => {
-  const tr = document.createElement("tr");
-  tr.innerHTML = `<td><span class="l-en">${en}</span><span class="l-ko">${ko}</span><br><a class="ph" href="../pdm/#${a}">PDM <span class="l-en">${ren}</span><span class="l-ko">${rko}</span></a></td>` +
-    Array.from({length:7}, () => `<td class="c"><i class="sw"></i></td>`).join("");
-  tb.appendChild(tr);
+GROUPS.forEach(g => {
+  tb.insertAdjacentHTML("beforeend", `<tr class="grp"><td colspan="8">${g.h}</td></tr>`);
+  g.rows.forEach(([code, name, a, src]) => {
+    const [s1, s2] = SRC[src];
+    const cells = Array.from({length:7}, () => g.ref ? `<td class="c ref">${B("ref.","참고")}</td>` : `<td class="c"><i class="sw"></i></td>`).join("");
+    tb.insertAdjacentHTML("beforeend",
+      `<tr><td><a class="code" href="../pdm/#${a}">${code}</a> ${name}<span class="srcl">${B("Source:","1차 자료원:")} ${s1}<br>${B("Alternative:","대체 자료원:")} ${s2}</span></td>${cells}</tr>`);
+  });
 });
 </script>
 </body>
