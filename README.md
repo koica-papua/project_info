@@ -7,6 +7,7 @@ The site is public to anyone with the link. `robots.txt` and a `noindex` meta ta
 ## Layout
 
 - `index.html`: landing page listing everything on the site
+- `dashboard/index.html`: performance dashboard (placeholder; Track 1 survey quality, Track 2 programme performance)
 - `maps/study-sites.html`: study-site map (55 Puskesmas, 18 BEmONC, CEmONC hospitals, comparison regencies)
 
 ## Adding material

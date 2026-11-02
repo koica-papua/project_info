@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Papua MNCH Performance Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Placeholder dashboard: two track bands (survey quality / programme performance), each with
+   the planned panels drawn as empty frames. Same palette as the site; traffic-light hues are semantic only. */
+:root{
+  --bg:#f5f7f6; --paper:#ffffff; --fg:#17201f; --muted:#5a6866; --faint:#8a9592; --line:#d5dddb;
+  --treat:#2a8a80; --treat-soft:#d3e8e3; --hatch:#e9eeec;
+  --ok:#3c8d5a; --warn:#c99a2e; --bad:#b23a48; --na:#c3cbc8;
+  --f-body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#111817; --paper:#18211f; --fg:#e5ecea; --muted:#9aa9a6; --faint:#6f7d7a; --line:#2c3836;
+  --treat:#3a9c91; --treat-soft:#23403c; --hatch:#1f2a28;
+  --ok:#5bb07a; --warn:#d9b04f; --bad:#d95666; --na:#3d4a47; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:32px}
+a{color:var(--treat)}
+.back{font-size:13px;color:var(--muted);text-decoration:none}.back:hover{color:var(--fg);text-decoration:underline}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(26px,3.6vw,36px);line-height:1.12;margin:6px 0 10px;text-wrap:balance}
+h2{font-size:20px;margin:0;text-wrap:balance}
+h3{font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+p{margin:0;max-width:72ch}
+.lede{color:var(--muted)}
+header{display:grid;gap:4px}
+.banner{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:var(--paper);padding:12px 14px;font-size:14px;max-width:900px}
+.dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--warn);margin-top:6px}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-family:var(--f-mono);font-size:11.5px;white-space:nowrap;vertical-align:2px}
+.pill.conf{background:var(--treat-soft);color:var(--fg)}
+.pill.cond{border:1px dashed var(--muted);color:var(--muted)}
+
+/* comparison table */
+.tbl{overflow-x:auto;background:var(--paper);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+tbody th{font-weight:600;font-size:13px;color:var(--muted);white-space:nowrap}
+.cmp{min-width:720px}
+.cmp td{width:42%}
+
+/* track bands */
+.track{display:grid;gap:16px;padding-top:24px;border-top:2px solid var(--fg)}
+.track-head{display:grid;gap:6px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.panel{background:var(--paper);border:1px solid var(--line);padding:16px;display:grid;gap:12px;min-width:0}
+.ph{font-size:12.5px;color:var(--faint);font-style:italic}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.tile{border:1px solid var(--line);padding:12px;display:grid;gap:4px;background:repeating-linear-gradient(135deg,transparent 0 8px,var(--hatch) 8px 9px)}
+.tile .v{font-family:var(--f-mono);font-size:24px;color:var(--faint);font-variant-numeric:tabular-nums}
+.tile .l{font-size:13px;font-weight:600}
+.tile .s{font-size:12px;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px}
+.reg{min-width:520px}
+.reg td.n,.reg th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.reg td.dash{color:var(--faint)}
+.reg tr.sub td{font-weight:600}
+.bar{height:8px;background:var(--hatch);border:1px solid var(--line);min-width:80px}
+
+.chart{height:180px;border-left:1px solid var(--muted);border-bottom:1px solid var(--muted);position:relative;background:repeating-linear-gradient(0deg,transparent 0 35px,var(--line) 35px 36px)}
+.chart span{position:absolute;inset:0;display:grid;place-items:center;color:var(--faint);font-size:13px;font-style:italic;text-align:center;padding:0 16px}
+.axis{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted);padding-left:4px}
+
+.matrix{min-width:760px}
+.matrix th.n{text-align:center}
+.matrix td.c{text-align:center}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--na);vertical-align:middle}
+.sw.ok{background:var(--ok)}.sw.warn{background:var(--warn)}.sw.bad{background:var(--bad)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+
+ul.plain{margin:0;padding-left:18px;display:grid;gap:6px;max-width:80ch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+footer{color:var(--muted);font-size:12.5px;display:grid;gap:4px;max-width:900px}
+.wrap > *,.track > *{min-width:0}
+:focus-visible{outline:2px solid var(--treat);outline-offset:2px}
+@media (max-width:820px){.cols,.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="../">← Papua MNCH evaluation site</a>
+    <div class="eyebrow" style="margin-top:14px">성과관리 대시보드 · Real-time feedback system</div>
+    <h1>Performance dashboard</h1>
+    <p class="lede">A two-track dashboard for the KOICA–UNICEF Papua MNCH programme. Track 1 tracks the quality of the evaluation survey as fieldwork happens. Track 2 shows programme progress against PDM targets by regency, for the Project Steering Committee and KOICA.</p>
+  </header>
+
+  <div class="banner"><span class="dot" aria-hidden="true"></span><div><b>Placeholder.</b> No data is shown yet. The panels below show the planned layout and indicators. Track 1 goes live with the baseline survey (fieldwork May–July 2027). Track 2 depends on the review of UNICEF data-sharing arrangements described below.</div></div>
+
+  <section aria-labelledby="h-cmp">
+    <h3 id="h-cmp">The two tracks</h3>
+    <div class="tbl">
+      <table class="cmp">
+        <thead><tr><th></th><th>Track 1 · Survey quality <span class="pill conf">Confirmed</span></th><th>Track 2 · Programme performance <span class="pill cond">Conditional</span></th></tr></thead>
+        <tbody>
+          <tr><th>Data source</th><td>Evaluation survey data collected by the research team (CAPI)</td><td>HMIS and UNICEF programme data, under a data-sharing protocol</td></tr>
+          <tr><th>Contents</th><td>Fieldwork progress and completion rate, back-check agreement, GPS flags, attrition and other quality indicators</td><td>Achievement against target by regency and indicator (traffic-light), date of latest data, alerts for missing data and attrition</td></tr>
+          <tr><th>Update frequency</th><td>Daily during fieldwork, linked to next-day high-frequency checks</td><td>Monthly for HMIS-linked indicators; each survey round for field-check and survey indicators</td></tr>
+          <tr><th>Users</th><td>Research team, field team (OHCC) and KOICA, for survey quality control</td><td>Circulated before PSC meetings; open to KOICA headquarters and the Indonesia office for decision-making</td></tr>
+          <tr><th>Start</th><td>Runs from the baseline survey</td><td>Built within the agreed scope after a review of UNICEF data policy and system compatibility within three months of project start; if not agreed, replaced by a monthly performance brief and a semi-annual integrated scorecard</td></tr>
+          <tr><th>Privacy and security</th><td>No respondent identifiers; aggregate quality indicators only</td><td>Aggregate level only; access rights set by user group; hosting and data retention location agreed in advance</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TRACK 1 -->
+  <section class="track" aria-labelledby="h-t1">
+    <div class="track-head">
+      <h2 id="h-t1">Track 1 · Survey quality <span class="pill conf">Confirmed</span></h2>
+      <div class="meta"><span>Source: <b>DiD household survey, CAPI</b></span><span>Updates: <b>daily during fieldwork</b></span><span>First data: <b>baseline, May 2027</b></span></div>
+    </div>
+
+    <div class="panel">
+      <h3>Quality indicators · current round</h3>
+      <div class="tiles">
+        <div class="tile"><span class="l">Completion rate</span><span class="v">—</span><span class="s">Completed ÷ target interviews</span></div>
+        <div class="tile"><span class="l">Back-check agreement</span><span class="v">—</span><span class="s">Key items matched on 10–15% re-visits</span></div>
+        <div class="tile"><span class="l">GPS flags</span><span class="v">—</span><span class="s">Interviews outside the sampled village</span></div>
+        <div class="tile"><span class="l">Attrition</span><span class="v">—</span><span class="s">Panel respondents not re-interviewed</span></div>
+        <div class="tile"><span class="l">Third-party presence</span><span class="v">—</span><span class="s">Sensitive module with others present</span></div>
+        <div class="tile"><span class="l">Audio audit pass rate</span><span class="v">—</span><span class="s">Recorded segments meeting protocol</span></div>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <h3>Progress by regency</h3>
+        <div class="tbl" style="border:none">
+          <table class="reg">
+            <thead><tr><th>Regency</th><th class="n">Target</th><th class="n">Done</th><th>Progress</th></tr></thead>
+            <tbody>
+              <tr><td>Mamberamo Raya</td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Biak Numfor</td><td class="n">120</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Fakfak</td><td class="n">160</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Pegunungan Arfak</td><td class="n">40</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Raja Ampat</td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Mappi</td><td class="n">120</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Asmat</td><td class="n">120</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Kepulauan Yapen <span class="ph">comparison</span></td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Merauke <span class="ph">comparison</span></td><td class="n">80</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr><td>Jayawijaya <span class="ph">comparison</span></td><td class="n">40</td><td class="n dash">—</td><td><div class="bar"></div></td></tr>
+              <tr class="sub"><td>Total</td><td class="n">920</td><td class="n dash">—</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ph">Targets: women per survey round, draft allocation of 30 Oct 2026 (subject to revision).</p>
+      </div>
+      <div class="panel">
+        <h3>Daily interviews and flags</h3>
+        <div class="chart"><span>Daily completed interviews and flagged interviews will appear here once fieldwork starts.</span></div>
+        <div class="axis"><span>Day 1</span><span>Fieldwork period</span><span>Day N</span></div>
+        <h3 style="margin-top:6px">Enumerator checks</h3>
+        <p class="ph">Per-enumerator interview length, outliers and straight-lining from the high-frequency checks, shown by enumerator code only.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK 2 -->
+  <section class="track" aria-labelledby="h-t2">
+    <div class="track-head">
+      <h2 id="h-t2">Track 2 · Programme performance <span class="pill cond">Conditional</span></h2>
+      <div class="meta"><span>Source: <b>HMIS and UNICEF programme data</b></span><span>Updates: <b>monthly (HMIS) · per survey round</b></span><span>Status: <b>pending UNICEF data-policy review</b></span></div>
+    </div>
+
+    <div class="panel">
+      <h3>Achievement against target · by regency</h3>
+      <div class="legend">
+        <span><i class="sw ok"></i>On track</span><span><i class="sw warn"></i>Behind target</span><span><i class="sw bad"></i>Off track</span><span><i class="sw"></i>No data yet</span>
+      </div>
+      <div class="tbl" style="border:none">
+        <table class="matrix">
+          <thead><tr><th>PDM indicator</th><th class="n">Mamberamo Raya</th><th class="n">Biak Numfor</th><th class="n">Fakfak</th><th class="n">Peg. Arfak</th><th class="n">Raja Ampat</th><th class="n">Mappi</th><th class="n">Asmat</th></tr></thead>
+          <tbody id="matrix"></tbody>
+        </table>
+      </div>
+      <p class="ph">Indicator list follows the programme PDM and will be confirmed with UNICEF. Each cell will also show the date of the latest data.</p>
+    </div>
+
+    <div class="two">
+      <div class="panel">
+        <h3>Data alerts</h3>
+        <p class="ph">Flags for missing HMIS months, late reporting and attrition, by regency.</p>
+      </div>
+      <div class="panel">
+        <h3>If Track 2 is not agreed</h3>
+        <p style="font-size:14px">The same feedback is delivered as a <b>monthly performance brief</b> and a <b>semi-annual integrated scorecard</b>, distributed to the PSC and KOICA.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="track" aria-labelledby="h-impl">
+    <h2 id="h-impl">Implementation</h2>
+    <ul class="plain">
+      <li><b>Build:</b> a lightweight setup using existing open-source dashboard tools, with no licence costs. The specific tools and access-rights arrangements will be confirmed after a feasibility review reported to KOICA within three months of project start.</li>
+      <li><b>Maintenance:</b> hosting, updates and fixes are handled by the evaluation team for the duration of the contract.</li>
+      <li><b>Fallback outputs:</b> the monthly brief and semi-annual scorecard are generated automatically alongside the dashboard, so feedback continues even if the dashboard cannot be maintained.</li>
+      <li><b>Handover:</b> at least three months of parallel operation with UNICEF and counterpart staff before the end of the project, with user and administrator manuals included in the handover package.</li>
+      <li><b>Running costs after handover:</b> use of existing UNICEF and counterpart IT infrastructure is considered first; annual running costs are estimated and reported to KOICA one year before the end of the project.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>Source: 사업수행계획서 (기술협상 3차 수정본, 2026.09.03), Section III, 실시간 환류체계: 성과관리 대시보드; Section 2-4, survey quality control. Sample targets: DiD allocation, 30 Oct 2026.</div>
+    <div>Maintained by the evaluation research team.</div>
+  </footer>
+</div>
+<script>
+// Track 2 matrix: planned indicators, no data yet
+const IND = [
+  ["Facility-based deliveries", "PDM outcome 2"],
+  ["ANC (6 contacts)", "PDM output 2.3"],
+  ["BEmONC readiness in project Puskesmas", "PDM outcome 1"],
+  ["Obstetric and neonatal referrals", "PDM outcome 2"],
+  ["Communities with improved MNCH knowledge and practice", "PDM outcome 3"],
+  ["Villages running birth preparedness (BPCR)", "PDM output 3.2"],
+];
+const tb = document.getElementById("matrix");
+IND.forEach(([name, ref]) => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td>${name}<br><span class="ph">${ref}</span></td>` + Array.from({length:7}, () => `<td class="c"><i class="sw" title="No data yet"></i></td>`).join("");
+  tb.appendChild(tr);
+});
+</script>
+</body>
+</html>
